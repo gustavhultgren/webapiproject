@@ -51,36 +51,3 @@ $(document).ready(function () {
     });
     }
 });
-
-//http://data.riksdagen.se/personlista/?iid=&fnamn=Johan&enamn=&utformat=json
-
-/*  $(document).ready(function () {
-    $(".create-post").click(function () {
-        $(".show-form").fadeToggle("fast", "linear");
-    });
-    $(".thread-img").hover(function () {
-        time = setTimeout(() => {
-            $(this).parent(".column").find(".stats").toggle();
-        }, 600);
-    }, hideToolTip);
-});
-
-function hideToolTip() {
-    clearTimeout(time);
-    $(".stats").fadeOut().hide();
-}
-
-$(document).ready(function () {
-    $(".column-thread > img").mouseover(function () {
-        $(this).addClass("resize-zoom");
-    })
-    $("img").mouseout(function () {
-        $(this).removeClass("resize-zoom");
-    });
-});  */
-
-//function show_post_creation() {
-//    $(".show-form").css({"display": "inline-grid", "align-self": "center"});
-//}
-
-//84 words
