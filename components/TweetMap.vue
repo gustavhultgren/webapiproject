@@ -5,7 +5,8 @@
                 <div class="col s1 left-align">
                     <router-link
                         to="/riksdagen"
-                        class="btn-floating btn-medium brown lighten-1 waves-effect">
+                        class="btn-floating btn-medium brown lighten-1 waves-effect"
+                    >
                         <i class="material-icons">arrow_back</i>
                     </router-link>
                 </div>
@@ -16,10 +17,10 @@
                 <div class="col s12 m12 center">
                     <i class="medium material-icons">map</i>
                     <p class="promo-caption">TweetMap</p>
-                    <p class="promo-caption">Vad säger folk på twitter om politiker runt om Sverige?</p>
-                    <google-map
-                    name="example"
-                    ></google-map>
+                    <p
+                        class="light"
+                    >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ratione corrupti assumenda vel. Itaque, quis, nobis eius tenetur incidunt quidem distinctio earum dolor, ullam ex cumque sed. Doloribus, error rerum?</p>
+                    <google-map name="example"></google-map>
                 </div>
             </div>
         </main>
@@ -27,15 +28,13 @@
 </template>
 
 <script>
-
 module.exports = {
-  components: {
-    GoogleMap
-  },
+    components: {
+        GoogleMap
+    },
 
-  computed: {
-  },
-}
+    computed: {}
+};
 </script>
 
 <style>

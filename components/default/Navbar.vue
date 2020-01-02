@@ -9,20 +9,7 @@
                 <ul class="right hide-on-med-and-down">
                     <ul id="nav-mobile" class="right hide-on-small-and-down">
                         <li class="waves-effect">
-                            <router-link 
-                                class="btn tooltipped dark brown" 
-                                data-position="bottom" 
-                                data-tooltip="TweetMap" 
-                                tag="a" to="/tweetmap">TweetMap
-                            <i class="medium material-icons right">map</i></router-link>
-                        </li>
-                        <li class="waves-effect">
-                            <router-link 
-                                class="btn tooltipped dark brown" 
-                                data-position="bottom" 
-                                data-tooltip="Om Oss" 
-                                tag="a" to="/om">Om Oss
-                            <i class="medium material-icons right">group</i></router-link>
+                            <router-link tag="a" to="riksdagen/om">Om Oss</router-link>
                         </li>
                         <li class="waves-effect">
                             <router-link 

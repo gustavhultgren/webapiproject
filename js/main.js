@@ -31,7 +31,7 @@ const router = new VueRouter({
             component:Ledamot
         },
         {
-            path: '/om',
+            path: '/riksdagen/om',
             component:About
         },
         {
