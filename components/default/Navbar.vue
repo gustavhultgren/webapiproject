@@ -9,7 +9,10 @@
                 <ul class="right hide-on-med-and-down">
                     <ul id="nav-mobile" class="right hide-on-small-and-down">
                         <li class="waves-effect">
-                            <router-link tag="a" to="riksdagen/om">Om Oss</router-link>
+                            <router-link tag="a" to="/tweetmap">Tweetmap</router-link>
+                        </li>
+                        <li class="waves-effect">
+                            <router-link tag="a" to="/om">Om Oss</router-link>
                         </li>
                         <li class="waves-effect">
                             <router-link tag="a" to="/">Politiknörden</router-link>
