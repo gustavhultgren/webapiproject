@@ -14,9 +14,9 @@
         <main class="container">
             <div class="row">
                 <div class="col s12 m12 center">
-                    <i class="medium material-icons">group</i>
+                    <i class="medium material-icons">map</i>
                     <p class="promo-caption">TweetMap</p>
-                    <p class="light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ratione corrupti assumenda vel. Itaque, quis, nobis eius tenetur incidunt quidem distinctio earum dolor, ullam ex cumque sed. Doloribus, error rerum?</p>
+                    <p class="promo-caption">Vad säger folk på twitter om politiker runt om Sverige?</p>
                     <google-map
                     name="example"
                     ></google-map>
