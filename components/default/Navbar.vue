@@ -9,13 +9,26 @@
                 <ul class="right hide-on-med-and-down">
                     <ul id="nav-mobile" class="right hide-on-small-and-down">
                         <li class="waves-effect">
-                            <router-link tag="a" to="/tweetmap">Tweetmap</router-link>
+                            <router-link 
+                                class="btn tooltipped dark brown" 
+                                data-position="bottom" 
+                                data-tooltip="TweetMap" 
+                                tag="a" to="/tweetmap">TweetMap
+                            <i class="medium material-icons right">map</i></router-link>
                         </li>
                         <li class="waves-effect">
-                            <router-link tag="a" to="/om">Om Oss</router-link>
+                            <router-link 
+                                class="btn tooltipped dark brown" 
+                                data-position="bottom" 
+                                data-tooltip="Om Oss" 
+                                tag="a" to="/om">Om Oss
+                            <i class="medium material-icons right">group</i></router-link>
                         </li>
                         <li class="waves-effect">
-                            <router-link tag="a" to="/">Politiknörden</router-link>
+                            <router-link 
+                                class="btn dark brown" 
+                                tag="a" to="/">Politiknörden
+                            <i class="medium material-icons right">local_parking</i></router-link>
                         </li>
                     </ul>
                 </ul>
@@ -30,7 +43,10 @@ module.exports = {
         //jQuery för att skapa sidenav-instans
         $(document).ready(function() {
             $(".sidenav").sidenav();
-        });
+        },
+          $(document).ready(function(){
+            $('.tooltipped').tooltip();
+        }));
     }
 };
 </script>
