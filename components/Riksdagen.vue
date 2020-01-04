@@ -89,6 +89,7 @@
 
 <script>
 module.exports = {
+    name: 'Riksdagen',
     mixins: [Vue2Filters.mixin],
     props: ["data", "response"],
     data: function() {

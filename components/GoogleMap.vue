@@ -67,7 +67,8 @@ module.exports = {
 </script>
 <style scoped>
 .google-map {
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   height: 600px;
   margin: 0 auto;
   background: rgb(187, 187, 187);
