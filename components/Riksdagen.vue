@@ -39,7 +39,7 @@
         </div>
         <transition name="fade">
             <div v-if="response == false" class="row center">
-                <div class="preloader-wrapper medium active">
+                <div class="preloader-wrapper big active">
                     <div class="spinner-layer spinner-blue-only">
                         <div class="circle-clipper left">
                             <div class="circle"></div>
@@ -63,25 +63,25 @@
                             filterBy(filterItems, ledamot_search, 'sorteringsnamn'),
                         'parti'),
                     50)"
-                class="list-item col s12 m6 l4"
+                class="list-item col s12 m6 l4 xl3"
                 v-bind:class="ledamot.parti"
                 v-bind:id="ledamot.intressent_id"
                 :key="ledamot.intressent_id"
             >
-            <router-link :to="'/riksdagen/ledamot/' + ledamot.intressent_id+'/'"> 
-                <div class="card medium hoverable">
-                    <div class="card-image z-depth-2">
-                        <img :src="ledamot.bild_url_192" />
+                <router-link :to="'/riksdagen/ledamot/' + ledamot.intressent_id+'/'"> 
+                    <div class="card medium hoverable">
+                        <div class="card-image">
+                            <img :src="ledamot.bild_url_192" />
+                        </div>
+                        <div class="card-content">
+                            <p class="card-title">
+                                {{ledamot.tilltalsnamn}} {{ledamot.efternamn}}
+                                <strong>({{ledamot.parti}})</strong>
+                            </p>
+                            <span class="black-text">Aktiva Tweets: ???</span>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <p class="card-title">
-                            {{ledamot.tilltalsnamn}} {{ledamot.efternamn}}
-                            <strong>({{ledamot.parti}})</strong>
-                        </p>
-                        <span class="black-text">Aktiva Tweets: ???</span>
-                    </div>
-                </div>
-            </router-link>
+                </router-link>
             </div>
         </transition-group>
     </div>
@@ -145,22 +145,21 @@ module.exports = {
     top: 15px;
     margin: auto;
     width: 200px;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .list-item .card-image > img {
     object-fit: cover;
     object-position: top;
     height: 200px;
-    border-radius: 50px;    
+    border-radius: 100%;    
 }
 
 .card-image {
-    border-radius: 50px;
+    border-radius: 100%;
 }
 
 .card-content {
-    text-align: center;
     color: black;
 }
 
