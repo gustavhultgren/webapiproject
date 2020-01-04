@@ -29,6 +29,7 @@
 
 <script>
 module.exports = {
+    name: 'TweetMap',
     components: {
         GoogleMap
     },
