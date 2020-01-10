@@ -44,6 +44,7 @@
                     <div class="col s12 m12 l12">
                         <div class="card-title s12 m12 center">Vad säger människor på twitter om {{ledamot.tilltalsnamn}} {{ledamot.efternamn}}?</div>
                         <div class="divider"></div>
+                                <google-map></google-map>
                     </div>
                     <div class="row center">
                         <div class="list-item col s12 m6 l3">
@@ -68,6 +69,9 @@
 
 <script>
 module.exports = {
+    components: {
+        GoogleMap
+    },
     data: function() {
         return {
             ledamot: null
