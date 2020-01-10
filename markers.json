@@ -1,0 +1,32 @@
+[
+    {
+      "coords": {"lat":59.329323, "lng":18.068581},
+      "content":"Testar123",
+      "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
+    },
+    {
+      "coords": {"lat":55.603310, "lng":13.001310},
+      "content":"Tweet från malmö 1",
+      "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
+    },
+    {
+      "coords": {"lat":55.603310, "lng":13.001310},
+      "content":"Tweet från malmö 2",
+      "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
+    },
+    {
+      "coords": {"lat":55.603310, "lng":13.001310},
+      "content":"Tweet från malmö 3",
+      "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
+    },
+    {
+      "coords": {"lat":55.603310, "lng":13.001310},
+      "content":"Tweet från malmö 4",
+      "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
+    },
+    {
+      "coords": {"lat":55.603310, "lng":13.001310},
+      "content":"Tweet från malmö 5",
+      "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
+    }
+]
