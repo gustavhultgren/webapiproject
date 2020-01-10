@@ -5,7 +5,8 @@
                 <div class="col s1 left-align">
                     <router-link
                         to="/riksdagen"
-                        class="btn-floating btn-medium brown lighten-1 waves-effect">
+                        class="btn-floating btn-medium brown lighten-1 waves-effect"
+                    >
                         <i class="material-icons">arrow_back</i>
                     </router-link>
                 </div>
@@ -17,9 +18,9 @@
                     <i class="medium material-icons">map</i>
                     <p class="promo-caption">TweetMap</p>
                     <p class="promo-caption">Vad säger folk på twitter om politiker runt om Sverige?</p>
-                    <google-map
-                    name="example"
-                    ></google-map>
+                    <google-map class="z-depth-3"
+                    name="example">
+                    </google-map>
                 </div>
             </div>
         </main>
@@ -27,15 +28,14 @@
 </template>
 
 <script>
-
 module.exports = {
-  components: {
-    GoogleMap
-  },
+    name: 'TweetMap',
+    components: {
+        GoogleMap
+    },
 
-  computed: {
-  },
-}
+    computed: {}
+};
 </script>
 
 <style>

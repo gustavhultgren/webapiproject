@@ -3,7 +3,9 @@
         <Navbar></Navbar>
         <Drawer></Drawer>
         <transition :name="transitionName">
-            <router-view tag="div" id="main-content" :data="data" :response="response"/>
+            <keep-alive include="Riksdagen">
+                <router-view :key="$route.fullPath" tag="div" id="main-content" :data="data" :response="response"/>
+            </keep-alive>
         </transition>
     </div>
 </template>
