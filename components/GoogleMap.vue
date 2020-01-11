@@ -13,8 +13,8 @@ module.exports = {
   mounted: function () {
     const element = document.getElementById(this.mapName)
     const options = {
-      zoom: 7,
-      center: new google.maps.LatLng(59.314693, 17.702665),
+      zoom: 5,
+      center: new google.maps.LatLng(61.426159, 15.067068),
       styles: [
             {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
             {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -97,7 +97,7 @@ module.exports = {
           ]
     }
     const map = new google.maps.Map(element, options);
-    //map.data.loadGeoJson("map.json");
+    var geocoder = new google.maps.Geocoder();
     var markerCluster = new MarkerClusterer(map, [], {
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
@@ -109,7 +109,7 @@ module.exports = {
         // Går igenom markers i arrayen och placerar ut dom. 
         // Finns det flera markers på samma plats så skapats det en grupp med markers.
         for (var i = 0; i < data.length; i++){
-          markerCluster.addMarker((tweetMarker(data[i])));
+          tweetMarker(data[i]);
         }
         console.log("success")
       },
@@ -119,42 +119,53 @@ module.exports = {
     });
 
     function tweetMarker(props){
-      var latNew = props.coords.lat + (Math.random() - .00004 ) / 180;
-      var lngNew = props.coords.lng + (Math.random() - .00004 ) / 180;
-      var finalLatLng = new google.maps.LatLng(latNew, lngNew);
-      var marker = new google.maps.Marker({
-        position: finalLatLng,
-        map: map
-      });
-      
-      if (props.iconImage){
-        var image = {
-          url: props.iconImage,
-          scaledSize: new google.maps.Size(25, 25)
-        }
-        marker.setIcon(image);
-      }   
-      
-      if (props.content){
-      var infoWindow = new google.maps.InfoWindow({
-        content: "<i class=" + "material-icons" + ">" + "person" + "</i>" + "<p>" + props.content + "</p>"
-      });
+      // Geocoder tar in adresser och översätter dom till koordinater.
+      var address = props.long_name;
+      geocoder.geocode({"address": address}, function(results, status){
+        if (status == "OK"){
+          var latN = results[0].geometry.location.lat() + (Math.random() - .00004 ) / 180;
+          var lngN = results[0].geometry.location.lng() + (Math.random() - .00004 ) / 180;
+          var finalLatLng = new google.maps.LatLng(latN, lngN);
+          var marker = new google.maps.Marker({
+            position: finalLatLng,
+            map: map
+          });
+        if (props.iconImage){
+          var image = {
+            url: props.iconImage,
+            scaledSize: new google.maps.Size(25, 25)
+          }
+          marker.setIcon(image);
+        }   
+        
+        if (props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content: "<i class=" + "material-icons" + ">" + "person" + "</i>" + "<p>" + props.content + "</p>"
+          });
 
-      marker.addListener("click", function(){
-        infoWindow.open(map, marker);
-        });
-      }
-      return marker;
+          marker.addListener("click", function(){
+            map.panTo(this.getPosition());
+            infoWindow.open(map, marker);
+            });
+          }
+        markerCluster.addMarker(marker);
+        }
+        else {
+          console.log('Geocode was not successful because: ' + status);
+        }
+      });
     }
   }
 };
 </script>
 <style scoped>
 .google-map {
-  max-width: 800px;
+  max-width: 1500px;
   width: 100%;
   height: 600px;
   margin: 0 auto;
+  margin-bottom: 15px;
+  margin-top: 15px;
   background: rgb(187, 187, 187);
 }
 </style>

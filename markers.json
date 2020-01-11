@@ -1,32 +1,52 @@
 [
     {
-      "coords": {"lat":59.329323, "lng":18.068581},
+      "long_name": "Stockholm",
       "content":"Testar123",
       "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
     },
     {
-      "coords": {"lat":55.603310, "lng":13.001310},
-      "content":"Tweet från malmö 1",
+      "long_name": "Helsinborg",
+      "content":"Helsingborg",
       "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
     },
     {
-      "coords": {"lat":55.603310, "lng":13.001310},
-      "content":"Tweet från malmö 2",
+      "long_name": "Malmö",
+      "content":"Malmö",
       "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
     },
     {
-      "coords": {"lat":55.603310, "lng":13.001310},
-      "content":"Tweet från malmö 3",
+      "long_name": "Göteborg",
+      "content":"Göteborg",
       "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
     },
     {
-      "coords": {"lat":55.603310, "lng":13.001310},
-      "content":"Tweet från malmö 4",
+      "long_name": "Dalarna",
+      "content":"Dalarna",
       "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
     },
     {
-      "coords": {"lat":55.603310, "lng":13.001310},
-      "content":"Tweet från malmö 5",
+      "long_name": "Ramlösa",
+      "content":"Ramlösa",
+      "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
+    },
+    {
+      "long_name": "Eskilstuna",
+      "content":"Eskilstuna",
+      "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
+    },
+    {
+      "long_name": "Halmstad",
+      "content":"Halmstad",
+      "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
+    },
+    {
+      "long_name": "Jönköping",
+      "content":"Jönköping",
+      "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
+    },
+    {
+      "long_name": "Växjö",
+      "content":"Växjö",
       "iconImage": "https://pbs.twimg.com/profile_images/875168599299637248/84CkAq6s.jpg"
     }
 ]

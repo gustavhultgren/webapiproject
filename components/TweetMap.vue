@@ -15,12 +15,14 @@
         <main class="container">
             <div class="row">
                 <div class="col s12 m12 center">
-                    <i class="medium material-icons">map</i>
-                    <p class="promo-caption">TweetMap</p>
+                    <h5 class="promo-caption">TweetMap</h5>
                     <p class="promo-caption">Vad säger folk på twitter om politiker runt om Sverige?</p>
-                    <google-map class="z-depth-3"
-                    name="example">
+                    <div class="divider"></div>
+                    <google-map 
+                        class="z-depth-3"
+                        name="example">
                     </google-map>
+                    <div class="divider"></div>
                 </div>
             </div>
         </main>
@@ -39,7 +41,4 @@ module.exports = {
 </script>
 
 <style>
-.karta {
-    height: 180px;
-}
 </style>
