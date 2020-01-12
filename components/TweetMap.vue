@@ -35,8 +35,6 @@ module.exports = {
     components: {
         GoogleMap
     },
-
-    computed: {}
 };
 </script>
 

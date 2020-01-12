@@ -68,7 +68,6 @@
                     <div class="card grey lighten-4 z-depth-2">
                         <div class="card-content">
                             <div class="row">
-                                <div class="divider"></div>
                                 <google-map :TweetTag="ledamot.tagg"></google-map>
                             </div>
                         </div>
@@ -104,15 +103,6 @@ module.exports = {
                     break;
                 }
             }
-        }
-    },
-    watch: {
-        ledamot: function() {
-            axios
-                .get("http://localhost:5000/tweets/" + this.ledamot.tagg)
-                .then(res => {
-                    this.tweets = res.data.tweets;
-                });
         }
     }
 };
