@@ -8,6 +8,7 @@ const Ledamot = window.httpVueLoader('components/Ledamot.vue')
 const About = window.httpVueLoader('components/OmOss.vue')
 const Karta = window.httpVueLoader('components/TweetMap.vue')
 const GoogleMap = window.httpVueLoader('components/GoogleMap.vue')
+const Tweetflow = window.httpVueLoader('components/Tweetflow.vue')
 
 Vue.use(Vue2Filters)
 
