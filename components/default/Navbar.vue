@@ -5,7 +5,7 @@
                 <a href="#" data-target="sidenav-1" class="sidenav-trigger">
                     <i class="material-icons">menu</i>
                 </a>
-                <router-link tag="a" class="brand-logo" to="/">Politiknörden<i class="material-icons">home</i></router-link>
+                <router-link tag="a" class="brand-logo" to="/">Politiknörden</router-link>
                 <ul class="right hide-on-med-and-down">
                     <ul id="nav-mobile" class="right hide-on-small-and-down">
                         <li class="waves-effect">
