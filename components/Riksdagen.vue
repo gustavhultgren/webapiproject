@@ -60,22 +60,22 @@
                 v-for="ledamot in 
                     limitBy( //begränsa på grund av prestandaproblem
                         orderBy( //sortera och filtrera
-                            filterBy(filterItems, ledamot_search, 'sorteringsnamn'),
+                            filterBy(filterItems, ledamot_search, 'namn'),
                         'parti'),
                     50)"
                 class="list-item col s12 m6 l4 xl3"
                 v-bind:class="ledamot.parti"
-                v-bind:id="ledamot.intressent_id"
-                :key="ledamot.intressent_id"
+                v-bind:id="ledamot.id"
+                :key="ledamot.id"
             >
-                <router-link :to="'/riksdagen/ledamot/' + ledamot.intressent_id+'/'"> 
+                <router-link :to="'/riksdagen/ledamot/' + ledamot.id+'/'"> 
                     <div class="card medium hoverable">
                         <div class="card-image">
-                            <img :src="ledamot.bild_url_192" />
+                            <img :src="ledamot.bild_stor" />
                         </div>
                         <div class="card-content">
                             <p class="card-title">
-                                {{ledamot.tilltalsnamn}} {{ledamot.efternamn}}
+                                {{ledamot.namn}}
                                 <strong>({{ledamot.parti}})</strong>
                             </p>
                             <span class="black-text">Aktiva Tweets: ???</span>

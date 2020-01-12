@@ -4,13 +4,15 @@
 <script>
 module.exports = {
   name: 'google-map',
-  props: ['name'],
+  props: ['name', 'tweettag'],
   data: function () {
     return {
       mapName: this.name + "-map",
+      tweets: null
     }
   },
   mounted: function () {
+
     const element = document.getElementById(this.mapName)
     const options = {
       zoom: 5,
@@ -102,25 +104,18 @@ module.exports = {
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
 
-    $.ajax({
-      url: "markers.json",
-      dataType: "json",
-      success: function(data){
-        // Går igenom markers i arrayen och placerar ut dom. 
-        // Finns det flera markers på samma plats så skapats det en grupp med markers.
-        for (var i = 0; i < data.length; i++){
-          tweetMarker(data[i]);
-        }
-        console.log("success")
-      },
-      error: function (error) {
-        console.log("Something went wrong", error);
-      }
-    });
+    axios
+            .get("http://localhost:5000/tweets/" + this.tweettag)
+            .then(res => {
+                this.tweets = res.data.tweets
+                for (var i = 0; i < this.tweets.length; i++){
+                  tweetMarker(this.tweets[i]);
+                }
+            });
 
     function tweetMarker(props){
       // Geocoder tar in adresser och översätter dom till koordinater.
-      var address = props.long_name;
+      var address = props.userLocation;
       geocoder.geocode({"address": address}, function(results, status){
         if (status == "OK"){
           var latN = results[0].geometry.location.lat() + (Math.random() - .00004 ) / 180;
@@ -130,19 +125,18 @@ module.exports = {
             position: finalLatLng,
             map: map
           });
-        if (props.iconImage){
+        if (props.profileImageURL){
           var image = {
-            url: props.iconImage,
+            url: props.profileImageURL,
             scaledSize: new google.maps.Size(25, 25)
           }
           marker.setIcon(image);
         }   
         
-        if (props.content){
+        if (props.tweetText){
           var infoWindow = new google.maps.InfoWindow({
-            content: "<i class=" + "material-icons" + ">" + "person" + "</i>" + "<p>" + props.content + "</p>"
+            content: "<i class=" + "material-icons" + ">" + "person" + "</i>" + "<p>" + props.tweetText + "</p>"
           });
-
           marker.addListener("click", function(){
             map.panTo(this.getPosition());
             infoWindow.open(map, marker);
@@ -162,7 +156,7 @@ module.exports = {
 .google-map {
   max-width: 1500px;
   width: 100%;
-  height: 600px;
+  min-height: 600px;
   margin: 0 auto;
   margin-bottom: 15px;
   margin-top: 15px;

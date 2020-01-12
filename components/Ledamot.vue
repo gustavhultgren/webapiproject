@@ -14,19 +14,25 @@
         </header>
         <main class="container">
             <div class="row">
-                <div class="col s12 xl6">
-                    <div class="card grey lighten-4 z-depth-2 hoverable">
+                <div class="col s12 l5 xl4">
+                    <nav>
+                        <div class="nav-wrapper brown lighten-1">
+                            <a href="#" class="brand-logo center">Profil</a>
+                        </div>
+                    </nav>
+                    <div class="card grey lighten-4 z-depth-2">
                         <div class="card-content row">
-                            <div class="col s12 m6 center">
+                            <div class="col s12 m6 l12 center">
                                 <img
                                     class="center"
                                     id="ledamot_image"
-                                    v-bind:src="ledamot.bild_url_192"
+                                    v-bind:src="ledamot.bild_stor"
                                 />
                             </div>
-                            <div class="col s12 m6">
+                            <div class="col s12 m6 l12">
                                 <div class="row">
-                                    <div class="card-panel flow-text">
+                                    <div class="card-panel">
+                                        <p class="card-title">{{ledamot.namn}}</p>
                                         <p>
                                             <b>Parti:</b>
                                             {{ledamot.parti}}
@@ -53,40 +59,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 xl6">
-                    <div class="card grey lighten-4 z-depth-2 hoverable">
+                <div class="col s12 l7 xl8">
+                    <nav>
+                        <div class="nav-wrapper red lighten-2">
+                            <a href="#" class="brand-logo center">TweetMap</a>
+                        </div>
+                    </nav>
+                    <div class="card grey lighten-4 z-depth-2">
                         <div class="card-content">
-                            <div>
-                                <div
-                                    class="card-title center"
-                                >Vad säger människor på twitter om {{ledamot.tilltalsnamn}} {{ledamot.efternamn}}?</div>
+                            <div class="row">
                                 <div class="divider"></div>
-                                <google-map></google-map>
-                            </div>
-                            <div class="row center">
-                                <div class="list-item col s12 m6 l3">
-                                    <div class="card-panel light-blue lighten-5 z-depth-1">
-                                        <div class="row">
-                                            <div class="col s2">
-                                                <img
-                                                    src="exempel.png"
-                                                    alt="Profilbild"
-                                                    class="circle responsive-img"
-                                                />
-                                            </div>
-                                            <div class="col s12 left-align">
-                                                <div class="divider"></div>
-                                                <span
-                                                    class="black-text"
-                                                >Exempel tweet från en twitter användare #politiknörden</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <google-map :TweetTag="ledamot.tagg"></google-map>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row" id="twitter-flow-container center-align">
+                <Tweetflow :TweetTag="ledamot.tagg" class="col s12 l7 xl8 offset-l5 offset-xl4">
+                </Tweetflow>
             </div>
         </main>
     </div>
@@ -95,22 +86,34 @@
 <script>
 module.exports = {
     components: {
-        GoogleMap
+        GoogleMap,
+        Tweetflow
     },
+    props: ["data"],
     data: function() {
         return {
-            ledamot: null
+            tweets: null
         };
     },
-    mounted() {
-        //GET-request till API, lagrar svar i info
-        axios
-            .get(
-                "https://data.riksdagen.se/personlista/?iid=" +
-                    this.$route.params.id +
-                    "&utformat=json"
-            )
-            .then(res => (this.ledamot = res.data.personlista.person));
+    computed: {
+        // Genererar 'ledamot'-variabel för den besökta ledamoten. Loopar genom data-prop:en och jämför ledamöter med ledamot-id i URL:en
+        ledamot: function() {
+            for (var i = 0; i < this.data.length; i++) {
+                if (this.data[i].id == this.$route.params.id) {
+                    return this.data[i];
+                    break;
+                }
+            }
+        }
+    },
+    watch: {
+        ledamot: function() {
+            axios
+                .get("http://localhost:5000/tweets/" + this.ledamot.tagg)
+                .then(res => {
+                    this.tweets = res.data.tweets;
+                });
+        }
     }
 };
 </script>
@@ -118,5 +121,16 @@ module.exports = {
 <style scoped>
 .ledamot_profile {
     min-height: 100vh;
+}
+
+#twitter-flow {
+    outline: solid rgb(209, 209, 209) 1px;
+}
+
+.tweet-profile {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    object-position: top;
 }
 </style>
