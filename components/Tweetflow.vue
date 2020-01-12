@@ -1,11 +1,14 @@
 <template>
     <div>
-        <nav>
+        <nav v-if="response == true">
             <div class="nav-wrapper blue">
                 <a href="#" class="brand-logo center">Tweets</a>
             </div>
         </nav>
-        <div id="twitter-flow">
+        <div v-if="response == false" class="progress blue lighten-2">
+            <div class="indeterminate blue"></div>
+        </div>
+        <div v-if="response == true" id="twitter-flow">
             <div
                 v-for="tweet in tweets"
                 :key="tweet.postedAt"
@@ -36,16 +39,22 @@ module.exports = {
     props: ["tweettag"],
     data: function() {
         return {
-            tweets: null
+            tweets: null,
+            response:false
         };
     },
     mounted: function() {
-        axios.get("http://localhost:5000/tweets/" + this.tweettag).then(res => {
+        axios.get("http://127.0.0.1:5000/tweets/" + this.tweettag).then(res => {
             this.tweets = res.data.tweets;
+            this.response = true;
         });
     }
 };
 </script>
 
-<style>
+<style scoped>
+#twitter-flow {
+    height: 300px;
+    overflow-y: auto;
+}
 </style>
