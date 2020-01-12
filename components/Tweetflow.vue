@@ -32,19 +32,17 @@
 
 <script>
 module.exports = {
-    name:'Tweetflow',
-    props:['tweettag'],
-    data: function(){
+    name: "Tweetflow",
+    props: ["tweettag"],
+    data: function() {
         return {
-            tweets:null
-        }
+            tweets: null
+        };
     },
-    mounted: function(){
-        axios
-            .get("http://localhost:5000/tweets/" + this.tweettag)
-            .then(res => {
-                this.tweets = res.data.tweets
-            });
+    mounted: function() {
+        axios.get("http://localhost:5000/tweets/" + this.tweettag).then(res => {
+            this.tweets = res.data.tweets;
+        });
     }
 };
 </script>
