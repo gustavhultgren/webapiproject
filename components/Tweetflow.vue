@@ -1,3 +1,8 @@
+<!-- 
+Komponent för twitterflöde.
+Flödet renderas ej förrän response blir sann.
+En laddningsanimation visas tills dess.
+-->
 <template>
     <div>
         <nav v-if="response == true">
@@ -36,15 +41,15 @@
 <script>
 module.exports = {
     name: "Tweetflow",
-    props: ["tweettag"],
+    props: ["tweettag"], //Twitter-taggen måste skickas med till komponenten så att flödet kan hämtas
     data: function() {
-        return {
+        return { //fördefinierade variabler
             tweets: null,
             response:false
         };
     },
-    mounted: function() {
-        axios.get("http://127.0.0.1:5000/tweets/" + this.tweettag).then(res => {
+    mounted: function() { //Körs när komponenten laddas in. Hämtar tweets och säger till när det är klart
+        axios.get("http://localhost:5000/tweets/" + this.tweettag).then(res => {
             this.tweets = res.data.tweets;
             this.response = true;
         });
@@ -53,8 +58,15 @@ module.exports = {
 </script>
 
 <style scoped>
-#twitter-flow {
-    height: 300px;
+#twitter-flow { /* Twitter-flödet visas som en egen ruta med egen scrollbar*/
+    max-height: 400px;
     overflow-y: auto;
+}
+.tweet-profile {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    object-position: top;
+    margin: 0 10px 7px;
 }
 </style>

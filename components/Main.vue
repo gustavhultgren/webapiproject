@@ -3,7 +3,10 @@
         <Navbar></Navbar>
         <Drawer></Drawer>
         <transition :name="transitionName">
+            <!-- keep-alive cachar routes tillstånd även om användaren byter till andra routes.
+            Just nu endast riksdagen pga att filtren ska sparas för användarens upplevelse -->
             <keep-alive include="Riksdagen">
+                <!-- data och response skickas med till routes -->
                 <router-view :key="$route.fullPath" tag="div" id="main-content" :data="data" :response="response"/>
             </keep-alive>
         </transition>
@@ -38,9 +41,9 @@ module.exports = {
                 this.onResponse(res); // Kallar på onResponse vid svar från API
             });
     },
-    methods:{
+    methods: {
         onResponse: function(res) {
-            this.data = res.data.ledamoter.splice(0, 349); //begränsa
+            this.data = res.data.ledamoter.splice(0, 349); //begränsa antalet ledamöter
             this.response = true;
         }
     }

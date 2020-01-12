@@ -1,4 +1,8 @@
 <template>
+    <!--
+    TweetMap är en container-komponent för google kartan.
+    Används just nu inte till något.
+    -->
     <div>
         <header class="section">
             <div class="row">

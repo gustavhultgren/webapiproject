@@ -68,15 +68,14 @@
                     <div class="card grey lighten-4 z-depth-2">
                         <div class="card-content">
                             <div class="row">
-                                <google-map :TweetTag="ledamot.tagg"></google-map>
+                                <google-map :TweetTag="ledamot.tagg"></google-map> <!-- Tweettag skickas med till GoogleMap-komponenten-->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row" id="twitter-flow-container center-align">
-                <Tweetflow :TweetTag="ledamot.tagg" class="col s12 l7 xl8 offset-l5 offset-xl4">
-                </Tweetflow>
+                <Tweetflow :TweetTag="ledamot.tagg" class="col s12 l7 xl8 offset-l5 offset-xl4"></Tweetflow>
             </div>
         </main>
     </div>
@@ -110,13 +109,7 @@ module.exports = {
 
 <style scoped>
 .ledamot_profile {
+    /* För att sidan inte ska hoppa i sidled */
     min-height: 100vh;
-}
-
-.tweet-profile {
-    height: 40px;
-    width: 40px;
-    object-fit: cover;
-    object-position: top;
 }
 </style>

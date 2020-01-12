@@ -68,7 +68,7 @@
                 v-bind:id="ledamot.id"
                 :key="ledamot.id"
             >
-                <router-link :to="'/riksdagen/ledamot/' + ledamot.id+'/'"> 
+                <router-link :to="'/riksdagen/ledamot/' + ledamot.id+'/'">
                     <div class="card medium hoverable">
                         <div class="card-image">
                             <img :src="ledamot.bild_stor" />
@@ -89,7 +89,7 @@
 
 <script>
 module.exports = {
-    name: 'Riksdagen',
+    name: "Riksdagen",
     mixins: [Vue2Filters.mixin],
     props: ["data", "response"],
     data: function() {
@@ -106,7 +106,7 @@ module.exports = {
                 { text: "Avhoppare", parti: "-" }
             ],
             selected_parties: [], //innehåller partier som användaren filtrerar
-            ledamot_search: "", //text som skrivs in i sökrutan
+            ledamot_search: "" //text som skrivs in i sökrutan
             //tweets:{}
         };
     },
@@ -135,8 +135,8 @@ module.exports = {
                 });
             }
         }
-    },
-    /* created (){
+    }
+    /* ,created (){
         this.getLastTweets()
     },
     methods: {
@@ -170,7 +170,7 @@ module.exports = {
     object-fit: cover;
     object-position: top;
     height: 200px;
-    border-radius: 100%;    
+    border-radius: 100%;
 }
 
 .card-image {

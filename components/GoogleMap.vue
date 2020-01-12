@@ -1,10 +1,11 @@
 <template>
+    <!-- Kartan som visar tweets -->
     <div class="google-map" :id="mapName"></div>
 </template>
 <script>
 module.exports = {
   name: 'google-map',
-  props: ['name', 'tweettag'],
+  props: ['name', 'tweettag'], //ledamotens twitter-tagg som har skickats med från ledamot-komponenten.
   data: function () {
     return {
       mapName: this.name + "-map",
@@ -15,8 +16,8 @@ module.exports = {
 
     const element = document.getElementById(this.mapName)
     const options = {
-      zoom: 5,
-      center: new google.maps.LatLng(61.426159, 15.067068),
+      zoom: 5, //hur inzoomad kartan är.
+      center: new google.maps.LatLng(61.426159, 15.067068), //centrerar kartans vy på dessa koordinater. Just nu Sverige
       styles: [
             {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
             {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -104,7 +105,7 @@ module.exports = {
       imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
     });
 
-    axios
+    axios //Hämtar tweets om ledamoten och skapar en map marker för varje tweet.
             .get("http://localhost:5000/tweets/" + this.tweettag)
             .then(res => {
                 this.tweets = res.data.tweets
@@ -116,16 +117,16 @@ module.exports = {
     function tweetMarker(props){
       // Geocoder tar in adresser och översätter dom till koordinater.
       var address = props.userLocation;
-      geocoder.geocode({"address": address}, function(results, status){
+      geocoder.geocode({"address": address}, function(results, status){ //Gör om plats till koordinater med Googles Geo-code API
         if (status == "OK"){
-          var latN = results[0].geometry.location.lat() + (Math.random() - .00004 ) / 180;
+          var latN = results[0].geometry.location.lat() + (Math.random() - .00004 ) / 180; //Sprider ut markers som ligger på varandra.
           var lngN = results[0].geometry.location.lng() + (Math.random() - .00004 ) / 180;
           var finalLatLng = new google.maps.LatLng(latN, lngN);
           var marker = new google.maps.Marker({
             position: finalLatLng,
             map: map
           });
-        if (props.profileImageURL){
+        if (props.profileImageURL){ //markerns ikon. Just nu Tweetens författares profilbild.
           var image = {
             url: props.profileImageURL,
             scaledSize: new google.maps.Size(25, 25)
@@ -134,10 +135,10 @@ module.exports = {
         }   
         
         if (props.tweetText){
-          var infoWindow = new google.maps.InfoWindow({
+          var infoWindow = new google.maps.InfoWindow({ //Innehållet i markerns popup på kartan
             content: "<i class=" + "material-icons" + ">" + "person" + "</i>" + "<p>" + props.tweetText + "</p>"
           });
-          marker.addListener("click", function(){
+          marker.addListener("click", function(){ //När en marker klickas på så centreras kartans vy på den
             map.panTo(this.getPosition());
             infoWindow.open(map, marker);
             });

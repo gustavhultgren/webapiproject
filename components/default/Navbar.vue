@@ -1,4 +1,8 @@
 <template>
+    <!-- 
+        Navigation längst uppe på sidan.
+        Länkarna försvinner i mobilt läge för användning av sidomeny.
+    -->
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper brown lighten-1">
@@ -40,7 +44,7 @@
 <script>
 module.exports = {
     mounted() {
-        //jQuery för att skapa sidenav-instans
+        //jQuery som skapar sidenav- och tooltip-instanser.
         $(document).ready(function() {
             $(".sidenav").sidenav();
         },
@@ -52,7 +56,7 @@ module.exports = {
 </script>
 
 <style scoped>
-.brand-logo {
+.brand-logo { /* För att loggan inte ska placeras längst ut i vänsterkanten */
     margin-left: 10px;
 }
 </style>
