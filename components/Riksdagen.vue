@@ -61,7 +61,7 @@
                     limitBy( //begränsa på grund av prestandaproblem
                         orderBy( //sortera och filtrera
                             filterBy(filterItems, ledamot_search, 'namn'),
-                        'parti'),
+                        'namn'),
                     50)"
                 class="list-item col s12 m6 l4 xl3"
                 v-bind:class="ledamot.parti"
@@ -105,9 +105,9 @@ module.exports = {
                 { text: "Centerpartiet", parti: "C" },
                 { text: "Avhoppare", parti: "-" }
             ],
-            selected_parties: [],
-            ledamot_search: "",
-            selected_ledamot: ""
+            selected_parties: [], //innehåller partier som användaren filtrerar
+            ledamot_search: "", //text som skrivs in i sökrutan
+            //tweets:{}
         };
     },
     beforeCreate() {
@@ -135,7 +135,25 @@ module.exports = {
                 });
             }
         }
-    }
+    },
+    /* created (){
+        this.getLastTweets()
+    },
+    methods: {
+        getLastTweets: function(){
+            for (var i = 0; i < this.data.length; i++){
+                axios
+                    .get("http://192.168.0.12:5000/tweets/" + this.data[i]['tagg'])
+                    .then(res => {
+                        tweet = res.data.tweets[0];
+                        this.data[i] = {'lastTweet':tweet}
+                    });
+            }
+            
+        },
+        onResponse: function(res, ledamot){
+        }
+    } */
 };
 </script>
 
