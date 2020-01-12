@@ -33,14 +33,14 @@ module.exports = {
     mounted() {
         //GET-request till API, lagrar svar i info
         axios
-            .get("https://data.riksdagen.se/personlista/?utformat=json")
+            .get("http://localhost:5000/ledamoter")
             .then(res => {
                 this.onResponse(res); // Kallar på onResponse vid svar från API
             });
     },
     methods:{
         onResponse: function(res) {
-            this.data = res.data.personlista.person.splice(0, 50); //begränsa
+            this.data = res.data.ledamoter.splice(0, 349); //begränsa
             this.response = true;
         }
     }
