@@ -47,7 +47,7 @@
                                         </p>
                                         <p>
                                             <b>Född:</b>
-                                            {{ledamot.fodd_ar}}
+                                            {{ledamot.fodd}}
                                         </p>
                                         <p>
                                             <b>Kön:</b>
@@ -121,10 +121,6 @@ module.exports = {
 <style scoped>
 .ledamot_profile {
     min-height: 100vh;
-}
-
-#twitter-flow {
-    outline: solid rgb(209, 209, 209) 1px;
 }
 
 .tweet-profile {
